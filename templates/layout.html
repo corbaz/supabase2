@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Agenda de Contactos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body class="fixed bg-gray-100">
+<div class="container top-0  w-screen">
+    <h2 class="text-3xl text-center font-bold bg-cyan-300 text-white w-screen py-2">Agenda de Contactos</h2>
+
+    <div class="flex w-screen py-2 bg-purple-300 text-white">
+        <li class="px-2"><a href="{{ url_for('inicio') }}">Inicio</a></li>
+        <li class="px-2"><a href="{{ url_for('home') }}">Home</a></li>
+    </div>
+</div>
+<div class="container mt-[0] w-screen h-screen">
+    {% block home %}
+
+    {% endblock %}
+</div>
+</body>
+</html>

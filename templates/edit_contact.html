@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+
+{% block home %}
+<div class="w-screen h-screen bg-gray-100 py-6 mx-0 rounded">
+    <h2 class="text-3xl text-center font-bold text-gray-800 m-2">Editar Contacto</h2>
+
+    <form class="max-w-lg mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+          action="/update_contact/{{ contact.0 }}" method="post">
+        <div class="mb-4">
+            <label class="block text-gray-700 font-bold mb-2" for="id">
+                ID
+            </label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                   id="id" name="id" type="text" placeholder="{{ contact.0 }}" readonly>
+        </div>
+        <div class="mb-4">
+            <label class="block text-gray-700 font-bold mb-2" for="fullName">
+                Nombre completo
+            </label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                   id="fullName" name="fullName" type="text" placeholder="Ingrese su nombre completo"
+                   value="{{ contact.2 }}">
+        </div>
+        <div class="mb-4">
+            <label class="block text-gray-700 font-bold mb-2" for="phone">
+                Teléfono
+            </label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                   id="phone" name="phone" type="text" placeholder="Ingrese su número de teléfono"
+                   value="{{ contact.3 }}">
+        </div>
+        <div class="mb-6">
+            <label class="block text-gray-700 font-bold mb-2" for="email">
+                Correo electrónico
+            </label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                   id="email" name="email" type="text" placeholder="Ingrese su correo electrónico"
+                   value="{{ contact.4 }}">
+        </div>
+        <div class="flex items-center justify-center">
+            <button class="bg-pink-400 hover:bg-pink-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    type="submit">
+                Modificar
+            </button>
+        </div>
+    </form>
+</div>
+{% endblock %}
