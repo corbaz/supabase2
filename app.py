@@ -1,7 +1,7 @@
 import psycopg2
 # import supabase as supabase
 from flask import Flask, render_template, request, redirect, url_for, flash
-from flask_mysqldb import MySQL
+# from flask_mysqldb import MySQL
 
 app = Flask(__name__)
 # Settings session
@@ -20,7 +20,7 @@ app.config['PostgreSQL_PORT'] = '5432'
 app.config['PostgreSQL_USER'] = 'postgres'
 app.config['PostgreSQL_PASSWORD'] = 'jcc123Lochasan'
 
-mysql = MySQL(app)
+# mysql = MySQL(app)
 postgresql = psycopg2.connect(host=app.config['PostgreSQL_HOST'],
                               database=app.config['PostgreSQL_DB'],
                               port=app.config['PostgreSQL_PORT'],
