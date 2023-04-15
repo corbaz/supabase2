@@ -31,4 +31,3 @@ heroku  https://git.heroku.com/supa-base.git (fetch)
 heroku  https://git.heroku.com/supa-base.git (push)
 origin  https://github.com/corbaz/supabase2.git (fetch)
 origin  https://github.com/corbaz/supabase2.git (push)
-git push -u origin main
