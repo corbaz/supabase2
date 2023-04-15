@@ -94,7 +94,6 @@ venv/
 ---
 ## Heroku cli - Comandos
 
-
 1) Instalar Heroku cli en Windows 10
 
 link download 
@@ -122,15 +121,15 @@ heroku login
 heroku create supa-base
 ```
 ---
-4) Crear una base de datos en Heroku(INFO DE LA BASE DE DATOS DE HEROKU)
-5) NO la use porque queria usar la de supabase
+4) Crear una base de datos en Heroku (INFO DE LA BASE DE DATOS DE HEROKU)
+5) NO la use porque queria usar la de Supabase
 
 ```cmd
 heroku addons:create heroku-postgresql:hobby-dev
 ```
 ---
-5) Crear una base de datos en Supabase y obtener la url de la base de datos
-6) conectar la base de datos de supabase
+6) Crear una base de datos en Supabase y obtener la url de la base de datos
+7) Conectar la base de datos de Supabase
 
 ```cmd
 # app.py - MIRAR EL CODIGO
@@ -170,29 +169,67 @@ postgresql = psycopg2.connect(host=app.config['PostgreSQL_HOST'],
 ---
 
 ## Github
-1) Crear un repositorio en Github
+1) Crear un repositorio en Github y en Gitlab
 
 2) Agregar el repositorio remoto
       
 ```cmd
-git remote add origin https://github.com/corbaz/supabase2.git
+git remote add github https://github.com/corbaz/supabase2.git
+git remote add gitlab https://gitlab.com/corbaz/supabase2.git
+git remote add heroku https://git.heroku.com/supa-base.git
 git remote -v
 ```
+github  https://github.com/corbaz/supabase2.git (fetch)
+
+github  https://github.com/corbaz/supabase2.git (push)
+
+gitlab  https://gitlab.com/corbaz/supabase2.git (fetch)
+
+gitlab  https://gitlab.com/corbaz/supabase2.git (push)
+
 heroku  https://git.heroku.com/supa-base.git (fetch)
 
 heroku  https://git.heroku.com/supa-base.git (push)
 
-origin  https://github.com/corbaz/supabase2.git (fetch)
-
-origin  https://github.com/corbaz/supabase2.git (push)
-
 ---
 
-## Heroku y Github push
+## Github, Gitlab y Heroku push
 ```cmd
 git add .
 git commit -m "Primer commit"
+git push github main
+git push gitlab main
 git push heroku main
-git push origin main
+
+```
+---
+.git/config
+```cmd
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = false
+	logallrefupdates = true
+	symlinks = false
+	ignorecase = true
+[remote "github"]
+	url = https://github.com/corbaz/supabase2.git
+	fetch = +refs/heads/*:refs/remotes/github/*
+[remote "gitlab"]
+	url = https://gitlab.com/corbaz/supabase2.git
+	fetch = +refs/heads/*:refs/remotes/gitlab/*
+[remote "heroku"]
+	url = https://git.heroku.com/supa-base.git
+	fetch = +refs/heads/*:refs/remotes/heroku/*
+[branch "main"]
+    remote = github
+    merge = refs/heads/main
+[branch "main"]
+    remote = gitlab
+    merge = refs/heads/main
+[branch "main"]
+    remote = heroku
+    merge = refs/heads/main
 ```
 
+git clone https://git.heroku.com/my-app.git
