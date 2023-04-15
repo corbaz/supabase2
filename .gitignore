@@ -1,5 +1,5 @@
-# created by virtualenv automatically
 # Archivos y directorios específicos de Flask
+__pycache__/
 instance/
 *.pyc
 *.pyo
@@ -7,6 +7,8 @@ instance/
 # Directorios y archivos específicos de virtualenv
 venv/
 .env
+
+# Directorios y archivos específicos de PyCharm
 .idea/
 
 # Otras exclusiones comunes

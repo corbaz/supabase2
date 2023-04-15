@@ -8,10 +8,12 @@ app = Flask(__name__)
 app.secret_key = 'jcc123Lochasan'
 
 # MySQL Connection
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'jcc123Lochasan'
-app.config['MYSQL_DB'] = 'python_db'
+# app.config['MYSQL_HOST'] = 'localhost'
+# app.config['MYSQL_USER'] = 'root'
+# app.config['MYSQL_PASSWORD'] = 'jcc123Lochasan'
+# app.config['MYSQL_DB'] = 'python_db'
+
+# mysql = MySQL(app)
 
 # Supabase Connection con Postgres
 app.config['PostgreSQL_HOST'] = 'db.agesxuymjorpnyrqtzrm.supabase.co'
@@ -20,7 +22,7 @@ app.config['PostgreSQL_PORT'] = '5432'
 app.config['PostgreSQL_USER'] = 'postgres'
 app.config['PostgreSQL_PASSWORD'] = 'jcc123Lochasan'
 
-# mysql = MySQL(app)
+
 postgresql = psycopg2.connect(host=app.config['PostgreSQL_HOST'],
                               database=app.config['PostgreSQL_DB'],
                               port=app.config['PostgreSQL_PORT'],
