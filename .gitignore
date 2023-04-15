@@ -1,0 +1,16 @@
+# created by virtualenv automatically
+# Archivos y directorios específicos de Flask
+__pycache__/
+instance/
+*.pyc
+*.pyo
+
+# Directorios y archivos específicos de virtualenv
+venv/
+.env
+
+# Otras exclusiones comunes
+*.pyc
+*.log
+*.swp
+.DS_Store
