@@ -247,6 +247,9 @@ ejecutar el siguiente script en bash o e pythoh en la raiz del proyecto
 ./deploy.sh
 ```
 ```cmd
+python deploy.py
+```
+```cmd
 ```
 
 ```cmd
