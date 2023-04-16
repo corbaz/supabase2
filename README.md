@@ -120,7 +120,9 @@ heroku login
 heroku create supa-base
 ```
 ---
-4) Crear una base de datos en Heroku (INFO DE LA BASE DE DATOS DE HEROKU)
+4) Crear una base de datos en Heroku 
+
+(INFO DE LA BASE DE DATOS DE HEROKU)
 5) NO la use porque queria usar la de Supabase
 
 ```cmd
@@ -196,10 +198,19 @@ heroku  https://git.heroku.com/supa-base.git (push)
 ```cmd
 git add .
 git commit -m "Primer commit"
-git push github main
-git push gitlab main
-git push heroku main
 
+git push github main
+
+# para poder hacer el primer push debe hacerse el pull y solucionar conflictos
+git pull gitlab main --allow-unrelated-histories
+
+# luego de solucionar conflictos volver a hcer add y commit y asi se puede hacer el push 
+git add .
+git commit -m "Primer commit"
+git push gitlab main
+
+git push heroku main
+heroku open
 ```
 ---
 .git/config
