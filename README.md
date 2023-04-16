@@ -250,6 +250,9 @@ ejecutar el siguiente script en bash o e pythoh en la raiz del proyecto
 python deploy.py
 ```
 ## Solo actualizar Github y Gitlab
+```bash
+./github-gitlab.sh
+```
 ```cmd
 python github-gitlab.py
 ```
