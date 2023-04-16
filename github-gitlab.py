@@ -13,7 +13,7 @@ now = datetime.now().strftime("%d de %B de %Y - %H:%M:%S")
 # now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 # Mensaje por defecto si no se proporciona uno
-default_commit_message = f"Commit realizado el {now}"
+default_commit_message = f"Commit desde Python: el {now}"
 
 
 # Función que ejecuta los comandos de git

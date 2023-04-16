@@ -4,7 +4,7 @@
 now=$(date +'%d de %B de %Y - %H:%M:%S')
 
 # Mensaje por defecto si no se proporciona uno
-default_commit_message="Commit realizado el $now"
+default_commit_message="Commit desde Bash el $now"
 
 # Obtener el mensaje y la rama de los argumentos, si se proporcionan
 while getopts "m:b:" opt; do

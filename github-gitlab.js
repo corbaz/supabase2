@@ -5,7 +5,7 @@ const { format } = require('date-fns');
 const now = format(new Date(), "dd 'de' MMMM 'de' yyyy - HH:mm:ss", { locale: require('date-fns/locale/es') });
 
 // Mensaje por defecto si no se proporciona uno
-const defaultCommitMessage = `Commit realizado el ${now}`;
+const defaultCommitMessage = `Commit desde Node-js: el ${now}`;
 
 // Obtener el mensaje y la rama de los argumentos, si se proporcionan
 const args = process.argv.slice(2);
