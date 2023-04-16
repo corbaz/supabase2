@@ -24,7 +24,7 @@ fi
 # Ejecutar los comandos de git
 git add .
 git commit -m "$commit_message"
-git push github "$branch"
-git push gitlab "$branch"
+git push github $branch
+git push gitlab $branch
 # git push heroku $branch
 # heroku open
