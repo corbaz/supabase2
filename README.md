@@ -241,9 +241,18 @@ heroku open
     remote = heroku
     merge = refs/heads/main
 ```
+# Deploy en Heroku y push en Github y Gitlab
+ejecutar el siguiente script en bash o e pythoh en la raiz del proyecto
+```bash
+./deploy.sh
+```
+```cmd
+```
 
-git clone https://git.heroku.com/my-app.git
+```cmd
 
+git clone https://git.heroku.com/supa-base.git
+---
 # GITLAB README - supabase2
 
 ## Getting started
