@@ -1,4 +1,5 @@
 import subprocess
+import os
 
 # Ejecutar los comandos de git
 subprocess.run(['git', 'add', '.'])
@@ -8,4 +9,4 @@ subprocess.run(['git', 'push', 'gitlab', 'main'])
 subprocess.run(['git', 'push', 'heroku', 'main'])
 
 # Abrir la aplicación en Heroku
-subprocess.run(['heroku', 'open'])
+os.system('heroku open')
