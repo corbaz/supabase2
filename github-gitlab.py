@@ -1,9 +1,16 @@
 import argparse
 import os
+import locale
 from datetime import datetime
 
+# Establecer la configuración regional en español
+locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8')
+
 # Obtener la fecha y hora actual
-now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+now = datetime.now().strftime("%d de %B de %Y - %H:%M:%S")
+
+# Obtener la fecha y hora actual
+# now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 # Mensaje por defecto si no se proporciona uno
 default_commit_message = f"Commit realizado el {now}"
@@ -15,8 +22,8 @@ def git_push(commit_message=default_commit_message, branch='main'):
     os.system(f'git commit -m "{commit_message}"')
     os.system(f'git push github {branch}')
     os.system(f'git push gitlab {branch}')
-    os.system(f'git push heroku {branch}')
-    os.system('heroku open')
+    # os.system(f'git push heroku {branch}')
+    # os.system('heroku open')
 
 
 # Parsear los argumentos
