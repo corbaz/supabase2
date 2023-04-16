@@ -256,6 +256,9 @@ python deploy.py
 ```cmd
 python github-gitlab.py
 ```
+```cmd 
+node github-gitlab.js
+```
 ---
 
 # Clonar de  Github, Gitlab o Heroku.
