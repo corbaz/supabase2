@@ -249,12 +249,19 @@ ejecutar el siguiente script en bash o e pythoh en la raiz del proyecto
 ```cmd
 python deploy.py
 ```
+## Solo actualizar Github y Gitlab
 ```cmd
+python github-gitlab.py
+```
+---
+
+# Clonar de  Github, Gitlab o Heroku.
+```cmd
+git clone https://github.com/corbaz/supabase2.git
+git clone https://gitlab.com/corbaz/supabase2.git
+git clone https://git.heroku.com/supa-base.git
 ```
 
-```cmd
-
-git clone https://git.heroku.com/supa-base.git
 ---
 # GITLAB README - supabase2
 
