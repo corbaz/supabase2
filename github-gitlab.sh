@@ -24,7 +24,12 @@ fi
 # Ejecutar los comandos de git
 git add .
 git commit -m "$commit_message"
+
+# shellcheck disable=SC2086
 git push github $branch
+
+# shellcheck disable=SC2086
 git push gitlab $branch
+
 # git push heroku $branch
 # heroku open
