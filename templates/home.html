@@ -1,5 +1,7 @@
 {% extends 'layout.html' %}
 
+{% block title %}Home{% endblock %}
+
 {% block home %}
     <div class="w-screen h-screen bg-gray-100">
         <div class="flex flex-row">
@@ -50,20 +52,27 @@
                             event.currentTarget.parentNode.remove();
                         });
                     });
-                </script>
-                <div class="sticky top-[115px]">
 
-                    <h1 class=" text-2xl text-center font-bold text-gray-800 m-2">Formulario de
+                    const alerts = document.querySelectorAll('[data-dismiss="alert"]');
+                    alerts.forEach(alert => {
+                        setTimeout(() => {
+                            alert.parentNode.remove();
+                        }, 5000);
+                    });
+                </script>
+
+                <div class="sticky top-[110px]">
+
+                    <h1 class=" text-2xl text-center font-bold text-gray-800 m-1">Formulario de
                         Contacto</h1>
 
-                    <form class="max-w-lg mx-auto bg-white shadow-md rounded px-8 py-2 mb-4"
-                          action="/add_contact" method="post">
+                    <form class="max-w-lg mx-auto bg-white shadow-md rounded px-8 py-4 mb-4" method="POST">
                         <div class="mb-4">
-                            <label class="block text-gray-700 font-bold mb-2" for="id">
+                            <label class="block text-gray-700 font-bold mb-2" for="id" style="display: none">
                                 ID
                             </label>
                             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                   id="id" name="id" type="text" placeholder="{{ next_id }}" readonly>
+                                   id="id" name="id" type="hidden" readonly>
                         </div>
                         <div class="mb-4">
                             <label class="block text-gray-700 font-bold mb-2" for="fullName">
@@ -86,11 +95,42 @@
                             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                    id="email" name="email" type="text" placeholder="Ingrese su correo electrónico">
                         </div>
-                        <div class="flex items-center justify-center">
-                            <button class="bg-pink-400 hover:bg-pink-500 text-white font-bold py-1 px-4 rounded focus:outline-none focus:shadow-outline"
-                                    type="submit">
-                                Enviar
+                        <div class="flex justify-center space-between">
+                            <button class="bg-green-700 text-white font-bold py-1 px-4 rounded mr-2"
+                                    type="submit"
+                                    id="boton-grabar"
+                                    formaction="/add_contact">
+                                Grabar
                             </button>
+                            <button disabled
+                                    class="bg-pink-700 text-white font-bold py-1 px-4 rounded mr-2 cursor-not-allowed opacity-50"
+                                    type="submit"
+                                    id="boton-modificar"
+                                    formaction="/update_contact/">
+                                Modificar
+                            </button>
+
+                            <button class="bg-gray-700 text-white font-bold py-1 px-4 rounded mr-2"
+                                    id="boton-cancelar"
+                                    onclick="boton_cancelar(); return false;">
+                                Cancelar
+                            </button>
+                            <script>
+                                function boton_cancelar() {
+                                    document.getElementById("id").value = "";
+                                    document.getElementById("fullName").value = "";
+                                    document.getElementById("phone").value = "";
+                                    document.getElementById("email").value = "";
+
+                                    document.getElementById("boton-grabar").disabled = false;
+                                    document.getElementById("boton-grabar").classList.remove("cursor-not-allowed", "opacity-50");
+
+                                    document.getElementById("boton-modificar").disabled = true;
+                                    document.getElementById("boton-modificar").classList.add("cursor-not-allowed", "opacity-50");
+
+                                    document.getElementById("boton-cancelar").disabled = false;
+                                }
+                            </script>
                         </div>
                     </form>
                 </div>
@@ -110,23 +150,50 @@
                     <tbody class="bg-purple-500 text-white text-center text-xs overflow-y-auto">
                     {% for c in contactos %}
                         <tr>
-                            <td class="border whitespace-nowrap py-3">{{ c.0 }}</td>
-                            <td class="border whitespace-nowrap">{{ c.2 }}</td>
-                            <td class="border whitespace-nowrap">{{ c.3 }}</td>
-                            <td class="border whitespace-nowrap">{{ c.4 }}</td>
+                            <td class="border whitespace-nowrap py-3">{{ c.id }}</td>
+                            <td class="border whitespace-nowrap">{{ c.fullName }}</td>
+                            <td class="border whitespace-nowrap">{{ c.phone }}</td>
+                            <td class="border whitespace-nowrap">{{ c.email }}</td>
                             <td class="border">
-                                <a href="/edit_contact/{{ c.0 }}"
-                                   class="bg-green-500 hover:bg-green-600 text-white font-bold py-1 px-4 rounded">Editar</a>
+                                <button type="button"
+                                        class="bg-green-500 hover:bg-green-600 text-white font-bold py-1 px-4 rounded"
+                                        onclick="actualizarDatos('{{ c.id }}');return false;"
+                                >Editar
+                                </button>
                             </td>
                             <td class="border">
-                                <a href="/delete_contact/{{ c.0 }}"
-                                   class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-4 rounded">Borrar</a>
+                                <a href="/delete_contact/{{ c.id }}"
+                                   class="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-4 rounded"
+                                >Borrar</a>
                             </td>
                         </tr>
                     {% endfor %}
                     </tbody>
                 </table>
+                <script>
+                    function actualizarDatos(contactId) {
+                        fetch(`/edit_contact/${contactId}`)
+                            .then(response => response.json())
+                            .then(data => {
+                                document.getElementById("id").value = data.id;
+                                document.getElementById("boton-modificar").formAction = "/update_contact/" + data.id;
+                                document.getElementById("fullName").value = data.fullName;
+                                document.getElementById("phone").value = data.phone;
+                                document.getElementById("email").value = data.email;
+
+                                document.getElementById("boton-grabar").disabled = true;
+                                document.getElementById("boton-grabar").classList.add("cursor-not-allowed", "opacity-50");
+
+                                document.getElementById("boton-modificar").disabled = false;
+                                document.getElementById("boton-modificar").classList.remove("cursor-not-allowed", "opacity-50");
+                            })
+                            .catch(error => {
+                                console.error('Error:', error);
+                            });
+                    }
+                </script>
             </div>
         </div>
     </div>
+
 {% endblock %}

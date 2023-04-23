@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Actualizar pantalla con JavaScript y Flask</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript">
+        function actualizarDatos() {
+            fetch('/ajax')
+                .then(response => response.json())
+                .then(data => {
+                    // Este es el callback que se ejecuta cuando la respuesta es satisfactoria
+                    // Aquí se actualiza el contenido del contenedor con los datos que recibimos de la ruta Flask
+                    const contenedor = document.getElementById("contenedor");
+                    contenedor.innerHTML = "";
+
+                    data.forEach(item => {
+                        contenedor.innerHTML += `<p>${item.apellido}</p>`;
+                    });
+                })
+                .catch(error => {
+                    // Este es el callback que se ejecuta cuando hay un error en la petición
+                    console.error('Error:', error);
+                });
+        }
+    </script>
+</head>
+<body>
+<button id="actualizar" onclick="actualizarDatos()">Actualizar pantalla</button>
+<hr>
+<h1>Actualizar pantalla con JavaScript y Flask</h1>
+<div id="contenedor">
+    <!-- Aquí colocamos los datos que deseamos actualizar -->
+
+</div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit User{% endblock %}
+
+{% block content %}
+<h1>Edit User</h1>
+<form method="post" action="{{ url_for('update_user', user_id=user.id) }}">
+    <div class="mb-4">
+        <label class="block text-gray-700 font-bold mb-2" for="name">
+            Name
+        </label>
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" name="name" type="text" value="{{ user.name }}">
+    </div>
+    <div class="mb-4">
+        <label class="block text-gray-700 font-bold mb-2" for="email">
+            Email
+        </label>
+        <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" name="email" type="email" value="{{ user.email }}">
+    </div>
+    <div class="flex items-center justify-between">
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+            Update
+        </button>
+    </div>
+</form>
+{% endblock %}

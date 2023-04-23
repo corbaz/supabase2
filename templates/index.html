@@ -10,22 +10,22 @@
 </head>
 
 <body class="fixed h-screen w-screen flex justify-center items-center bg-black cursor-pointer">
-    <a href="{{ url_for('home') }}"
-       class="absolute z-50 text-white font-bold text-5xl">Ingresar</a>
+<a href="{{ url_for('home') }}"
+   class="absolute z-50 text-white font-bold text-5xl">Ingresar</a>
 
-    <img src="../static/imagenes/messi.jpeg"
-         class="absolute z-40 rounded-full bg-transparent object-fill ">
-
-    <video autoplay loop muted
-           class="absolute z-40 object-fill">
-        <source src="../static/videos/agenda.mp4"
-                type="video/mp4"/>
-    </video>
-    <script>
-        setTimeout(function () {
-            window.location.href = "{{ url_for('home') }}";
-        }, 20000);
-    </script>
+<img src="../static/imagenes/messi.jpeg"
+     class="absolute z-40 rounded-full bg-transparent object-cover"
+     style="overflow-clip-margin: content-box; overflow: clip;"/>
+<video autoplay loop muted
+       class="absolute z-40 object-fill">
+    <source src="../static/videos/open.mp4"
+            type="video/mp4"/>
+</video>
+<script>
+    setTimeout(function () {
+        window.location.href = "{{ url_for('home') }}";
+    }, 20000);
+</script>
 </body>
 </html>
 

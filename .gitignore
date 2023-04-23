@@ -3,6 +3,7 @@ __pycache__/
 instance/
 *.pyc
 *.pyo
+config.py
 
 # Directorios y archivos específicos de virtualenv
 venv/
